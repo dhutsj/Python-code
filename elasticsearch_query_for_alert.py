@@ -72,7 +72,7 @@ def send_email():
     receiver = 'shuangjie.tian@aaa.com,shuangjie.tian@bbb.com'
     smtpServer = 'smtp.163.com'
     username = 'jszxtsj@163.com'
-    password = 'QLWXLMZOJJWMUECN'
+    password = ''
 
     mail_title = 'alarm email for mars'
     mail_body = '''Alarm email for mars.
