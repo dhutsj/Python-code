@@ -8,7 +8,7 @@ import pytz
 
 
 def get_max_count():
-    es = Elasticsearch([{'host': '10.10.10.10', 'port': 9222}])
+    es = Elasticsearch([{'host': '10.10.10.10', 'port': 9200}])
     # print(es)
     # res = es.search(index='mars-staging-report-db2-history', body={
     #     "query": {"match_all": {}},
