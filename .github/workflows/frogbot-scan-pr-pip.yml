@@ -17,9 +17,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       # Install prerequisites
-      - uses: actions/setup-python@v3
-        with:
-          python-version: "3.7"
+      - uses: actions/setup-python@v4
 
       - uses: jfrog/frogbot@v2
         env:
