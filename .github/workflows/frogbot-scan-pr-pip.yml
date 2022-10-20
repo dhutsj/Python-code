@@ -28,7 +28,7 @@ jobs:
         env:
           # [Mandatory]
           # JFrog platform URL (This functionality requires version 3.29.0 or above of Xray)
-          JF_URL: "https://ctt.dev.artifactory.tio.systems/xray/"
+          JF_URL: "https://ctt.dev.artifactory.tio.systems/"
 
           # [Mandatory if JF_ACCESS_TOKEN is not provided]
           # JFrog username with 'read' permissions for Xray. Must be provided with JF_PASSWORD
