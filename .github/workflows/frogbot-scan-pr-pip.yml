@@ -18,6 +18,10 @@ jobs:
 
       # Install prerequisites
       - uses: actions/setup-python@v4
+      
+      - name: Test Python
+        run: |
+          python /home/ec2-user/.jfrog/dependencies/pip/5/pipdeptree.py --json
 
       - uses: jfrog/frogbot@v2
         env:
