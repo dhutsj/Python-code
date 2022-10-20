@@ -1,0 +1,35 @@
+name: "Frogbot Scan Pull Request"
+on:
+  pull_request:
+    types: [opened, synchronize]
+permissions:
+  pull-requests: write
+  contents: read
+jobs:
+  scan-pull-request:
+    runs-on: self-hosted
+    # A pull request needs to be approved, before Frogbot scans it. Any GitHub user who is associated with the
+    # "frogbot" GitHub environment can approve the pull request to be scanned.
+    environment: frogbot
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - uses: jfrog/frogbot@v2
+        env:
+          # [Mandatory]
+          # JFrog platform URL (This functionality requires version 3.29.0 or above of Xray)
+          JF_URL: "https://ctt.dev.artifactory.tio.systems/xray/"
+
+          # [Mandatory if JF_ACCESS_TOKEN is not provided]
+          # JFrog username with 'read' permissions for Xray. Must be provided with JF_PASSWORD
+          JF_USER: "tian4"
+
+          # [Mandatory if JF_ACCESS_TOKEN is not provided]
+          # JFrog password. Must be provided with JF_USER
+          JF_PASSWORD: ${{ secrets.AF_API_KEY }}
+
+          # [Mandatory]
+          # The GitHub token automatically generated for the job
+          JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
