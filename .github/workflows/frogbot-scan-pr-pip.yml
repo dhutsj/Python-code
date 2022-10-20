@@ -17,11 +17,12 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       # Install prerequisites
-      # - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
       
-      # - name: Test Python
-      #  run: |
-      #    python /home/ec2-user/.jfrog/dependencies/pip/5/pipdeptree.py --json
+      - name: Test Python
+        run: |
+          python --version
+          python /home/centos/.jfrog/dependencies/pip/5/pipdeptree.py --json
 
       - uses: jfrog/frogbot@v2
         env:
@@ -41,4 +42,3 @@ jobs:
           # The GitHub token automatically generated for the job
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-          JF_REQUIREMENTS_FILE: "requirements.txt"
